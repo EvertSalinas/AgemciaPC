@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Reporte>
+@using Agemcia.Models
+@{
+    ViewBag.Title = "Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reportes</h2>
+@if (!Model.Any())
+{
+    <p>No hay ningun producto.</p>
+}
+else
+{
+    <div class="row">
+
+        <div class="col-md-3">
+            <p><a href="~/Reportes/NuevoReporte" class="btn btn-primary btn-md">Nuevo Reporte</a>
+            </p>
+        </div>
+    </div>
+
+    <table class="table table-responsive table-striped table-hover table-bordered">
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th></th>
+        </tr>
+        @foreach (var reporte in Model)
+        {
+            <tr>
+                <td></td>
+                <td>Reporte del @reporte.fecha.Date.ToShortDateString()</td>
+                <td>@Html.ActionLink("Ver Detalle", "Detalle", "Reportes", new {id = reporte.id}, null)</td>
+            </tr>
+        }
+    </table>
+}
+

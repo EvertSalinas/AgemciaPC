@@ -1,0 +1,18 @@
+﻿@model Agemcia.ViewModels.ValeFormViewModel
+@{
+    ViewBag.Title = "AgregarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Agregar Producto</h2>
+    <br>
+    @using (Html.BeginForm("GuardarVale", "Vales"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Vale.productos)
+            @Html.DropDownListFor(m => m.Vale.productos, new SelectList(Model.Productos, "id", "nombre"), "Seleccionar Producto", new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    }
+</div>

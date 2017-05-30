@@ -1,0 +1,24 @@
+﻿@model Agemcia.ViewModels.ProductoFormViewModel
+@{
+    ViewBag.Title = "GuardarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Agregar Producto</h2>
+    <br>
+    @using (Html.BeginForm("Guardar", "Productos"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Producto.nombre)
+            @Html.TextBoxFor(m => m.Producto.nombre, new {@class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Producto.precio)
+            @Html.TextBoxFor(m => m.Producto.precio, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m => m.Producto.id)
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    }
+</div>
+

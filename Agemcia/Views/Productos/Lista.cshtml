@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Agemcia.Models.Producto>
+@using Agemcia.Models
+@{
+    ViewBag.Title = "Lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de productos</h2>
+@if (!Model.Any())
+{
+    <p>No hay ningun producto.</p>
+}
+else
+{
+    <div class="row">
+       
+        <div class="col-md-3">
+            <p><a href="~/Productos/AgregarProducto" class="btn btn-primary btn-md">Agregar Producto</a></p>
+        </div>
+        <div class="col-md-9">
+            @using (Html.BeginForm())
+            {
+                <p>
+                    Buscar por Nombre: @Html.TextBox("SearchString")
+                    <input type="submit" class="btn btn-primary btn-sm" value="Search" />
+                </p>
+            }
+        </div>
+    </div>
+
+    <table class="table table-responsive table-striped table-hover table-bordered">
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(producto.nombre, "Editar", "Productos", new { id = producto.id}, null)</td>
+                <td>$ @producto.precio</td>
+            </tr>
+        }
+    </table>
+}
+
+

@@ -1,0 +1,12 @@
+﻿@model Agemcia.Models.Reporte
+@using Agemcia.Models
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reporte de @Model.fecha.Date.ToShortDateString()</h2>
+<ul>
+    <li>Fecha: @Model.fecha.Date.ToShortDateString()</li>
+</ul>
+
