@@ -16,6 +16,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Vale.productos)
             @Html.DropDownListFor(m => m.Vale.productos, new SelectList(Model.Productos, "id", "nombre"), "Seleccionar Producto", new { @class = "form-control"})
+            <br />
             <button type="button" class="btn btn-primary">Agregar Producto</button>
         </div>
         @Html.HiddenFor(m => m.Vale.id)

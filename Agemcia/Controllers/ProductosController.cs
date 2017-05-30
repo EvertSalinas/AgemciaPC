@@ -47,12 +47,23 @@ namespace Agemcia.Controllers
         {
             var viewModel = new ProductoFormViewModel();
 
-            return View("ProductoForm", viewModel);
+            return View("AgregarProducto", viewModel);
         }
 
         [HttpPost]
         public ActionResult Guardar(Producto producto)
         {
+            
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new ProductoFormViewModel
+                {
+                    Producto = producto
+                };
+
+                return View("AgregarProducto", viewModel);
+            }
+            
             if (producto.id == 0)
             {
                 _context.Productos.Add(producto);
@@ -65,7 +76,7 @@ namespace Agemcia.Controllers
                 productoInDb.precio = producto.precio;
             }
 
-            _context.SaveChanges();
+           _context.SaveChanges();
 
             return RedirectToAction("Lista", "Productos");
         }
@@ -82,7 +93,7 @@ namespace Agemcia.Controllers
                 Producto = producto
             };
 
-            return View("ProductoForm", viewModel);
+            return View("AgregarProducto", viewModel);
         }
         /*
         public ActionResult Borrar(int id)

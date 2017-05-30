@@ -1,3 +1,3 @@
 ﻿$("agregarvale").click(function () {
-    window.location("http//")
+    window.location.href = "/{Vale}/{NuevoVale}"
 })

@@ -7,13 +7,13 @@ namespace Agemcia.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AgemciaMigration : IMigrationMetadata
+    public sealed partial class ChangeTypePrecio : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AgemciaMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeTypePrecio));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705241704032_AgemciaMigration"; }
+            get { return "201705301953126_ChangeTypePrecio"; }
         }
         
         string IMigrationMetadata.Source

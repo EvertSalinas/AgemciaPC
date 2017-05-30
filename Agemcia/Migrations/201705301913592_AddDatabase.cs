@@ -3,7 +3,7 @@ namespace Agemcia.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AgemciaMigration : DbMigration
+    public partial class AddDatabase : DbMigration
     {
         public override void Up()
         {
@@ -14,18 +14,32 @@ namespace Agemcia.Migrations
                         id = c.Int(nullable: false, identity: true),
                         nombre = c.String(),
                         precio = c.Int(nullable: false),
+                        Vale_id = c.Int(),
                     })
-                .PrimaryKey(t => t.id);
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Vales", t => t.Vale_id)
+                .Index(t => t.Vale_id);
             
             CreateTable(
                 "dbo.Reportes",
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        nombre = c.String(),
                         fecha = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id);
+            
+            CreateTable(
+                "dbo.Vales",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        numero = c.Int(nullable: false),
+                        Reporte_id = c.Int(),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Reportes", t => t.Reporte_id)
+                .Index(t => t.Reporte_id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -103,17 +117,22 @@ namespace Agemcia.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Vales", "Reporte_id", "dbo.Reportes");
+            DropForeignKey("dbo.Productoes", "Vale_id", "dbo.Vales");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Vales", new[] { "Reporte_id" });
+            DropIndex("dbo.Productoes", new[] { "Vale_id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Vales");
             DropTable("dbo.Reportes");
             DropTable("dbo.Productoes");
         }

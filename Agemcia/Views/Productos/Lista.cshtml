@@ -6,6 +6,9 @@
 }
 
 <h2>Lista de productos</h2>
+<div class="col-md-12">
+    <p><a href="~/Productos/AgregarProducto" class="btn btn-primary btn-md">Agregar Producto</a></p>
+</div>
 @if (!Model.Any())
 {
     <p>No hay ningun producto.</p>
@@ -13,11 +16,7 @@
 else
 {
     <div class="row">
-       
-        <div class="col-md-3">
-            <p><a href="~/Productos/AgregarProducto" class="btn btn-primary btn-md">Agregar Producto</a></p>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-12">
             @using (Html.BeginForm())
             {
                 <p>

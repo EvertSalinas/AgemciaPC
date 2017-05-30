@@ -10,10 +10,12 @@ namespace Agemcia.Models
     {
         public int id { get; set; }
 
+        [Required]
+        [StringLength(255)]
         [Display(Name = "Nombre del producto:")]
         public string nombre { get; set; }
 
         [Display(Name = "Precio del producto:")]
-        public int precio { get; set; }
+        public float precio { get; set; }
     }
 }

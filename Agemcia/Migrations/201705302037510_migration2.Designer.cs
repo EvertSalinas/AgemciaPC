@@ -7,13 +7,13 @@ namespace Agemcia.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addValeModel : IMigrationMetadata
+    public sealed partial class migration2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addValeModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migration2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705290006351_addValeModel"; }
+            get { return "201705302037510_migration2"; }
         }
         
         string IMigrationMetadata.Source
